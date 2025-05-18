@@ -1,16 +1,16 @@
 
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
-const Home = () => {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+// const Home = () => {
+//   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  return (
+//   return (
   
-      <>
-        <Navbar></Navbar>
-      </>
-  );
+//       <>
+//         <Navbar></Navbar>
+//       </>
+//   );
 
-}
+// }
 
-export default Home
+// export default Home
