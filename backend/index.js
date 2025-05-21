@@ -3,10 +3,14 @@ const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');  
+const path = require('path');
 require('dotenv').config();  
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Serving frontend file
+const _dirname = path.resolve();
 
 
 app.use(express.json());  
@@ -112,6 +116,11 @@ const authenticateJWT = (req, res, next) => {
 app.get('/protected', authenticateJWT, (req, res) => {
   res.status(200).json({ message: 'This is a protected route', user: req.user });
 });
+
+app.use(express.static(path.join(_dirname, "frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(_dirname, "frontend", "dist", "index.html"));
+})
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
